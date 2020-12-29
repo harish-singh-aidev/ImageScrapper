@@ -8,12 +8,20 @@ class BingImageScrapper:
         self.__BASE_URL = 'https://www.bing.com'
 
     def getSearchUrl(self):
+        """
+        :return: bing search web url
+        """
         try:
             return f"{self.__BASE_URL}/images/search?view=detailV2&q={self.searchStr}s&form=HDRSC2&first=1&tsc=ImageBasicHover"
         except Exception as e:
             print(str(e))
 
     def fetch_image_urls(self, wd):
+        """
+        Fetch images links from bing site
+        :param wd: Selenium Web Driver
+        :return: set of image links
+        """
         wd.get(self.getSearchUrl())
 
         image_urls = set()

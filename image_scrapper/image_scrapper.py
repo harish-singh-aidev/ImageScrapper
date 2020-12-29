@@ -17,6 +17,10 @@ class ImageScrapper:
         self.__configre()
 
     def __configre(self):
+        """
+        Configure image directory and scrapper object
+        :return:
+        """
         try:
             if self.searchEngine=='google':
                 self.dirHandlr.setBaseDir('./GoogleImages')
@@ -32,6 +36,10 @@ class ImageScrapper:
 
 
     def scrapImage(self):
+        """
+        scrap and save image urls
+        :return: str
+        """
         try:
             imageUrls = self.__getImageUrls()
 
@@ -47,6 +55,9 @@ class ImageScrapper:
             print(str(e))
 
     def __getImageUrls(self):
+        """
+        :return: set of image urls
+        """
         try:
             return self.seleniumGetRequest()
         except Exception as e:
@@ -55,6 +66,12 @@ class ImageScrapper:
 
 
     def __persist_image(self, url: str, counter):
+        """
+        Save images in local directory
+        :param url: web url
+        :param counter: int
+        :return:
+        """
         try:
             image_content = WebRequestHandler(url).getRequest().content
         except Exception as e:
@@ -70,6 +87,10 @@ class ImageScrapper:
             print(f"ERROR - Could not save {url} - {e}")
 
     def seleniumGetRequest(self):
+        """
+        perform selenium get reques
+        :return: set of image urls
+        """
         try:
             with webdriver.Chrome(self.__DRIVER_PATH) as wd:
                 return self.scrapper.fetch_image_urls(wd)

@@ -7,6 +7,9 @@ class Scrapper:
         self.searchEngine = searchEngine
 
     def imageScrap(self):
+        """
+        :return: str
+        """
         try:
             return ImageScrapper(self.searchStr,self.imageCount, self.searchEngine).scrapImage()
         except Exception as e:

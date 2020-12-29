@@ -9,16 +9,29 @@ class GoogleImageScrapper:
 
 
     def getSearchUrl(self):
+        """
+        :return: bing search web url
+        """
         try:
             return f"{self.__BASE_URL}/search?safe=off&site=&tbm=isch&source=hp&q={self.searchStr}&oq={self.searchStr}&gs_l=img"
         except Exception as e:
             print(str(e))
 
     def __scrollWindow(self, wd):
+        """
+        Scroll window to load more images
+        :param wd: Selenium Web Driver
+        :return:
+        """
         wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(self.__SLEEP_TIME)
 
     def fetch_image_urls(self, wd):
+        """
+        Fetch images links from bing site
+        :param wd: Selenium Web Driver
+        :return: set of image links
+        """
         wd.get(self.getSearchUrl())
 
         image_urls = set()
