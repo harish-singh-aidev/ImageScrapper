@@ -43,6 +43,9 @@ class ImageScrapper:
         try:
             imageUrls = self.__getImageUrls()
 
+            if not imageUrls or len(imageUrls) == 0:
+                return f"No image found with {self.searchStr}"
+
             if not self.dirHandlr.isPathExist():
                 self.dirHandlr.createPath()
 
