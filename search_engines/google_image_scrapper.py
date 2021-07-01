@@ -4,7 +4,7 @@ class GoogleImageScrapper:
     def __init__(self, searchStr, imageCount):
         self.searchStr = searchStr
         self.imageCount = imageCount
-        self.__SLEEP_TIME = 2
+        self.__SLEEP_TIME = 5
         self.__BASE_URL = 'https://www.google.com'
 
 

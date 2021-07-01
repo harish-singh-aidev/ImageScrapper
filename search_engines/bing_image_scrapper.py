@@ -27,9 +27,9 @@ class BingImageScrapper:
         image_urls = set()
         image_count = 0
 
-        time.sleep(2)
+        time.sleep(5)
         while len(image_urls) < self.imageCount:
-            self.__SLEEP_TIME = 0.5
+            self.__SLEEP_TIME = 1
             image_urls.add(wd.find_element_by_css_selector("img").get_attribute('src'))
             wd.find_element_by_id('navr').click()
         return image_urls
